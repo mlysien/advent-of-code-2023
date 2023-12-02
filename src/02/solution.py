@@ -43,6 +43,9 @@ for line in lines:
     games.append({game_id: game_sets})
 
 ids = []
+
+# part I
+
 for game in games:
     blues = greens = reds = 0
     for v in game.values():
@@ -61,5 +64,29 @@ for game in games:
         if is_valid:
             ids.append(list(game.keys())[0])
 
-
 print(sum(ids))
+
+# part II
+
+powers = []
+
+for game in games:
+    max_red = max_green = max_blue = 0
+    for values_set in game.values():
+        for item in values_set:
+            if item.red > max_red:
+                max_red = item.red
+
+            if item.green > max_green:
+                max_green = item.green
+
+            if item.blue > max_blue:
+                max_blue = item.blue
+
+    power = max_red * max_green * max_blue
+    powers.append(power)
+
+
+print(sum(powers))
+
+
